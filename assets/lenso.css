@@ -1,0 +1,280 @@
+/* =========================================================
+   LENSO — Colors & Type
+   Camera rental house · Madrid · cinema lenses & cameras
+   Source: lenso-films.com (Squarespace theme + custom.css)
+   ========================================================= */
+
+@font-face {
+  font-family: "Pragmatica Extended";
+  src: url("./fonts/pragmatica-extended-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  /* ---------- COLOR · primitives ---------- */
+  --color-black:        #000000;
+  --color-white:        #FFFFFF;
+  --color-cream:        #F2F1EC;  /* warm off-white, alt sections */
+  --color-lavender:     #E6E4E8;  /* pale neutral surface, dividers */
+  --color-espresso:     #625448;  /* warm dark brown accent */
+
+  /* extended neutrals derived for UI scale */
+  --color-ink-95:       #0A0A0A;
+  --color-ink-80:       #1F1F1F;
+  --color-ink-60:       #4A4A4A;
+  --color-ink-40:       #8A8A8A;
+  --color-ink-20:       #C8C7C2;
+  --color-ink-10:       #DEDDD7;
+
+  /* ---------- COLOR · semantic ---------- */
+  --bg:                 var(--color-white);
+  --bg-alt:             var(--color-cream);
+  --bg-inverse:         var(--color-black);
+  --surface:            var(--color-white);
+  --surface-alt:        var(--color-cream);
+  --surface-raised:     var(--color-white);
+
+  --fg:                 var(--color-black);
+  --fg-1:               var(--color-black);     /* primary text */
+  --fg-2:               var(--color-ink-60);    /* secondary text */
+  --fg-3:               var(--color-ink-40);    /* tertiary / meta */
+  --fg-muted:           var(--color-espresso);  /* warm muted */
+  --fg-inverse:         var(--color-white);
+
+  --border:             var(--color-lavender);
+  --border-strong:      var(--color-black);
+  --divider:            var(--color-ink-10);
+
+  --accent:             var(--color-espresso);
+  --accent-fg:          var(--color-white);
+
+  /* ---------- TYPOGRAPHY · families ---------- */
+  --font-display:  "Pragmatica Extended", "Helvetica Neue", Arial, sans-serif;
+  --font-heading:  "Pragmatica Extended", "Helvetica Neue", Arial, sans-serif;
+  --font-body:     "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:     ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* ---------- TYPOGRAPHY · weights ---------- */
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold:600;
+  --fw-bold:    700;
+  --fw-black:   800;
+
+  /* ---------- TYPOGRAPHY · scale (px) ---------- */
+  --fs-display: 96px;   /* hero wordmark */
+  --fs-h1:      72px;
+  --fs-h2:      40px;
+  --fs-h3:      28px;
+  --fs-h4:      19px;   /* section labels, caps */
+  --fs-h5:      15px;
+  --fs-body:    16px;
+  --fs-small:   13px;
+  --fs-micro:   11px;
+
+  /* ---------- TYPOGRAPHY · rhythm ---------- */
+  --lh-tight:   1.05;
+  --lh-heading: 1.2;
+  --lh-body:    1.6;
+
+  --ls-display:  0.01em;
+  --ls-heading:  0.02em;
+  --ls-button:   0.05em;
+  --ls-overline: 0.18em;
+  --ls-body:     0em;
+
+  /* ---------- SPACING ---------- */
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:   16px;
+  --space-lg:   24px;
+  --space-xl:   40px;
+  --space-2xl:  64px;
+  --space-3xl:  96px;
+  --space-4xl:  144px;
+
+  /* ---------- RADII ---------- */
+  --radius-sm:   6.4px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-pill: 999px;
+
+  /* ---------- SHADOWS (used sparingly, brand is flat) ---------- */
+  --shadow-sm:  0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:  0 6px 24px rgba(0,0,0,.08);
+  --shadow-lg:  0 24px 60px rgba(0,0,0,.12);
+
+  /* ---------- MOTION ---------- */
+  --ease-out:   cubic-bezier(.2,.7,.2,1);
+  --ease-in:    cubic-bezier(.6,.0,.8,.2);
+  --ease-std:   cubic-bezier(.4,.0,.2,1);
+  --dur-fast:   140ms;
+  --dur-base:   220ms;
+  --dur-slow:   420ms;
+
+  /* ---------- LAYOUT ---------- */
+  --container:  1240px;
+  --gutter:     24px;
+}
+
+/* =========================================================
+   Semantic element styles — drop this CSS in and base
+   typography just works.
+   ========================================================= */
+
+html { background: var(--bg); color: var(--fg); }
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  color: var(--fg-1);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.display, h1.display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(64px, 9vw, var(--fs-display));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: clamp(44px, 6vw, var(--fs-h1));
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h3 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h4, .overline {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.overline {
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-overline);
+  font-weight: var(--fw-semibold);
+  color: var(--fg-2);
+}
+
+p {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+  margin: 0 0 1em 0;
+  text-wrap: pretty;
+}
+
+small, .text-small {
+  font-size: var(--fs-small);
+  color: var(--fg-2);
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  transition: color var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out);
+}
+a:hover { opacity: 0.6; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--divider);
+  margin: var(--space-xl) 0;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-button);
+  line-height: 1.2;
+  text-transform: uppercase;
+  padding: 1rem 1.3rem;
+  border-radius: var(--radius-md);
+  border: 0;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+  user-select: none;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn--primary {
+  background: var(--color-black);
+  color: var(--color-white);
+  font-size: 1rem;
+}
+.btn--primary:hover { background: var(--color-espresso); }
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+  font-size: 1.05rem;
+}
+.btn--secondary:hover { background: var(--color-black); color: var(--color-white); }
+
+.btn--tertiary {
+  background: transparent;
+  color: var(--color-black);
+  border: 2px solid var(--color-black);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  padding: 0.7rem 1.1rem;
+}
+.btn--tertiary:hover { background: var(--color-black); color: var(--color-white); }

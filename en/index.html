@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Moon Smart Focus — Quick Setup Manual · LENSO</title>
+<link rel="stylesheet" href="../manual.css" />
+</head>
+<body>
+
+<!-- ============== MOBILE BAR ============== -->
+<div class="mobile-bar">
+  <div class="mobile-bar__brand">
+    <img src="../assets/lenso-logo.png" alt="LENSO" />
+    <span class="x">×</span>
+    <img src="../assets/moon-logo.png" alt="MOON" />
+    <span style="margin-left: 8px; opacity: 0.6;">Manual</span>
+  </div>
+  <button class="mobile-bar__toggle" id="navToggle">Index</button>
+</div>
+
+<div class="shell">
+
+  <!-- ============== SIDEBAR ============== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brandlock">
+      <div class="brand-row">
+        <img src="../assets/lenso-logo.png" alt="LENSO" />
+        <span class="x">×</span>
+        <img src="../assets/moon-logo.png" alt="MOON" />
+      </div>
+      <div>
+        <div class="sidebar__meta">Field Manual · v1.0</div>
+        <div class="sidebar__title">Moon Smart Focus</div>
+        <div class="sidebar__sub">Quick setup, settings, and troubleshooting for the LENSO crew.</div>
+      </div>
+      <div class="lang-toggle">
+        <a href="../index.html">ES</a>
+        <a href="index.html" class="is-active">EN</a>
+      </div>
+    </div>
+
+    <nav class="nav" id="nav">
+      <div class="nav__group">Get started</div>
+      <a href="#overview"><span class="num">01</span>Introduction</a>
+      <a href="#hardware"><span class="num">02</span>The system</a>
+      <a href="#wiring"><span class="num">03</span>Wiring diagram</a>
+
+      <div class="nav__group">Setup flow</div>
+      <a href="#power"><span class="num">04</span>Power</a>
+      <a href="#wifi"><span class="num">05</span>Wi-Fi & channel</a>
+      <a href="#calibration"><span class="num">06</span>Calibration</a>
+      <a href="#protocol"><span class="num">07</span>LCS & protocol</a>
+      <a href="#tilta"><span class="num">08</span>Tilta mapping</a>
+
+      <div class="nav__group">In use</div>
+      <a href="#modes"><span class="num">09</span>Tracking modes</a>
+      <a href="#interface"><span class="num">10</span>Interface settings</a>
+      <a href="#bitbox"><span class="num">11</span>BitBox / Ethernet</a>
+
+      <div class="nav__group">Service</div>
+      <a href="#troubleshoot"><span class="num">12</span>Troubleshooting</a>
+      <a href="#return"><span class="num">13</span>Return checklist</a>
+    </nav>
+
+    <div class="sidebar__actions">
+      <button onclick="window.print()">Download PDF</button>
+      <button class="secondary" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑ Top</button>
+    </div>
+
+    <div class="sidebar__footer">
+      Compiled by LENSO Film Services<br/>
+      from the Moon training, Apr 2026.<br/>
+      Madrid · Spain
+    </div>
+  </aside>
+
+  <!-- ============== MAIN ============== -->
+  <main class="main">
+
+    <!-- HERO -->
+    <section class="hero" id="overview">
+      <div class="hero__top">
+        <div class="hero__crest">
+          <img src="../assets/lenso-logo.png" alt="LENSO" />
+          <span class="x">×</span>
+          <span class="label">MOON · FIELD MANUAL</span>
+        </div>
+        <div class="hero__meta">DOCUMENT LFS-MOON-001
+REVISION 1.0 · MAY 2026
+</div>
+      </div>
+
+      <h1 class="hero__title" style="line-height: 0.9">QUICK<br/>SETUP <span class="accent">→</span><br/>MOON SMART<br/>FOCUS.</h1>
+      <p class="hero__sub">A short, direct guide to setting up, running, and rebooting the Moon system on a LENSO rental — </p>
+
+      <div class="hero__quote">
+        "Nine out of ten support calls are Wi-Fi or BitBox. Master those two and you've covered the whole day."
+      </div>
+    </section>
+
+    <!-- THE SYSTEM -->
+    <section class="band band--white" id="hardware">
+      <div class="eyebrow">02 · The System</div>
+      <h2 class="section-h">Three pieces.<br/>One signal chain.</h2>
+      <p class="lead">Every Moon kit is built from the <strong>Eyes</strong> (3D sensor mounted on top of the lens), the <strong>Brain</strong> (processing, Wi-Fi, and serial output to the LCS), and the <strong>App</strong> (control — also runs on iPad or any browser). Knowing what each piece does makes setup and on-set diagnosis instant.</p>
+
+      <div class="grid-3">
+        <div class="spec-card">
+          <h4>Eyes</h4>
+          <div class="key">35<small>cm min range</small></div>
+          <div class="divider"></div>
+          <p>Intel RealSense 3D sensor, factory-calibrated with a unique file called <em>"glasses"</em>. Captures a depth map 30 times per second. IR projector effective up to 4 m in low-light scenes.</p>
+        </div>
+        <div class="spec-card">
+          <h4>Brain</h4>
+          <div class="key">12.5<small>v · 2A min</small></div>
+          <div class="divider"></div>
+          <p>Anodized aluminum housing. Hosts the Wi-Fi hotspot, runs the tracking algorithms, and sends distance data to the LCS over a serial cable.</p>
+        </div>
+        <div class="spec-card">
+          <h4>App</h4>
+          <div class="key">App or browser</div>
+          <div class="divider"></div>
+          <p>Ships with a Sony PDT-FP1. Multiple devices can connect at the same time — useful for DP-on-monitor + AC-on-handset workflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WIRING DIAGRAM -->
+    <section class="band band--cream" id="wiring">
+      <div class="eyebrow">03 · Wiring Diagram</div>
+      <h2 class="section-h">RIG</h2>
+      <p class="lead">A standard ARRI rig. The Brain feeds data to the LCUBE, which drives the lens motors, while a clean 12 V line keeps the Brain stable. Always power the Brain on its own — sharing the camera D-tap is the fastest way to trigger the voltage drops described in §04.</p>
+
+      <div class="diagram">
+        <svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000" stroke-width="1.5" class="wiring-svg" style="width: 697px">
+          <!-- CAM block -->
+          <rect x="40" y="60" width="200" height="120" rx="6" fill="#fff"/>
+          <foreignObject x="56" y="76" width="170" height="90">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="svg-label svg-label--block">
+              <h6>CAMERA</h6>
+              <p>
+</p>
+            </div>
+          </foreignObject>
+          <!-- Eyes mounted on cam -->
+          <rect x="170" y="36" width="56" height="22" rx="3" fill="#000"/>
+          <circle cx="186" cy="47" r="3" fill="#fff" stroke="none"/>
+          <circle cx="210" cy="47" r="3" fill="#fff" stroke="none"/>
+          <foreignObject x="170" y="20" width="60" height="14">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="svg-label svg-label--mini"><span>EYES</span></div>
+          </foreignObject>
+          <line x1="198" y1="58" x2="198" y2="68" stroke="#000"/>
+
+          <!-- Motors (daisy-chained) -->
+          <foreignObject x="490" y="20" width="200" height="22">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="svg-label svg-label--group"><span>MOTORS</span></div>
+          </foreignObject>
+          <g>
+            <rect x="490" y="60" width="52" height="92" rx="6" fill="#fff"/>
+            <circle cx="516" cy="74" r="8" fill="#fff"/>
+            <foreignObject x="490" y="118" width="52" height="32">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="svg-label svg-label--motor"><span style="text-align: right">  FOCUS</span></div>
+            </foreignObject>
+            <circle cx="516" cy="60" r="3" fill="#000" stroke="none"/>
+            <circle cx="542" cy="100" r="3" fill="#000" stroke="none"/>
+          </g>
+          <g>
+            <rect x="562" y="60" width="52" height="92" rx="6" fill="#fff"/>
+            <circle cx="588" cy="74" r="8" fill="#fff"/>
+            <foreignObject x="562" y="118" width="52" height="32">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="svg-label svg-label--motor"><span>     IRIS</span></div>
+            </foreignObject>
+            <circle cx="562" cy="100" r="3" fill="#000" stroke="none"/>
+            <circle cx="614" cy="100" r="3" fill="#000" stroke="none"/>
+          </g>
+          <g>
+            <rect x="634" y="60" width="52" height="92" rx="6" fill="#fff"/>
+            <circle cx="660" cy="74" r="8" fill="#fff"/>
+            <foreignObject x="634" y="118" width="52" height="32">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="svg-label svg-label--motor"><span>   ZOOM</span></div>
+            </foreignObject>
+            <circle cx="634" cy="100" r="3" fill="#000" stroke="none"/>
+            <circle cx="660" cy="152" r="3" fill="#000" stroke="none"/>
+          </g>
+
+          <!-- MOON brain block -->
+          <rect x="60" y="270" width="220" height="140" rx="6" fill="#000"/>
+          <foreignObject x="80" y="284" width="180" height="110">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="svg-label svg-label--block svg-label--inv">
+              <h6>MOON</h6>
+              <p>Brain</p>
+            </div>
+          </foreignObject>
+          <circle cx="180" cy="380" r="5" fill="#fff" stroke="none"/>
+          <foreignObject x="194" y="370" width="80" height="20">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="svg-label svg-label--mini svg-label--inv"><span>SERIAL OUT</span></div>
+          </foreignObject>
+          <line x1="110" y1="270" x2="110" y2="252" stroke="#000"/>
+          <line x1="130" y1="270" x2="130" y2="246" stroke="#000"/>
+          <foreignObject x="80" y="226" width="160" height="20">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="svg-label svg-label--mini"><span>Wi-Fi 2.4 / 5 GHz</span></div>
+          </foreignObject>
+
+          <!-- LCUBE block -->
+          <rect x="420" y="270" width="180" height="140" rx="6" fill="#fff"/>
+          <foreignObject x="438" y="286" width="150" height="110">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="svg-label svg-label--block">
+              <h6>LCUBE</h6>
+              <p>Lens Control Unit</p>
+            </div>
+          </foreignObject>
+          <circle cx="510" cy="378" r="5" fill="#fff"/>
+          <foreignObject x="438" y="372" width="160" height="18">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="svg-label svg-label--mini"><span>
+
+
+
+SERIAL IN · MOTOR OUT</span></div>
+          </foreignObject>
+          <circle cx="510" cy="270" r="3" fill="#000" stroke="none"/>
+
+          <!-- Power -->
+          <rect x="690" y="300" width="190" height="92" rx="6" fill="#fff" stroke-dasharray="4 4"/>
+          <foreignObject x="710" y="316" width="160" height="68">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="svg-label svg-label--block">
+              <h6 style="font-size: 14px">EXTRA<br/>POWER</h6>
+              <p>12.5 V · ≥ 2 A · clean</p>
+            </div>
+          </foreignObject>
+
+          <!-- Connection lines (drawn BEFORE pin labels so labels sit on top) -->
+          <!-- Brain → LCUBE (serial) -->
+          <path d="M 280 340 L 420 340" stroke="#625448" stroke-width="2"/>
+          <!-- Camera → first motor (FOCUS top port) -->
+          <path d="M 240 100 C 360 100, 420 60, 516 60" stroke="#000" stroke-width="2"/>
+          <!-- Daisy chain between motors -->
+          <path d="M 542 100 L 562 100" stroke="#000" stroke-width="2"/>
+          <path d="M 614 100 L 634 100" stroke="#000" stroke-width="2"/>
+          <!-- Last motor (ZOOM) → LCUBE -->
+          <path d="M 660 152 C 660 200, 510 220, 510 270" stroke="#000" stroke-width="2"/>
+          <!-- Power → Brain (curva inferior, fuera de bloques) -->
+          <path d="M 690 380 C 700 450, 280 450, 220 410" stroke="#000" stroke-width="2" stroke-dasharray="6 4"/>
+
+          <!-- Pin labels — placed OUTSIDE blocks and lines -->
+          <g class="pin-group">
+            <!-- A: Eyes → Camera -->
+            <circle cx="148" cy="48" r="12" fill="#000"/>
+            <foreignObject x="136" y="36" width="24" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="svg-pin svg-pin--inv"><span>A</span></div>
+            </foreignObject>
+            <!-- B: Camera → Motor -->
+            <circle cx="380" cy="74" r="12" fill="#000"/>
+            <foreignObject x="368" y="62" width="24" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="svg-pin svg-pin--inv"><span>B</span></div>
+            </foreignObject>
+            <!-- C: Brain serial-out -->
+            <circle cx="300" cy="340" r="12" fill="#fff" stroke="#000" stroke-width="1.5"/>
+            <foreignObject x="288" y="328" width="24" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="svg-pin"><span>C</span></div>
+            </foreignObject>
+            <!-- D: LCUBE serial-in -->
+            <circle cx="400" cy="340" r="12" fill="#000"/>
+            <foreignObject x="388" y="328" width="24" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="svg-pin svg-pin--inv"><span>D</span></div>
+            </foreignObject>
+            <!-- E: Motor → LCUBE -->
+            <circle cx="600" cy="200" r="12" fill="#000"/>
+            <foreignObject x="588" y="188" width="24" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="svg-pin svg-pin--inv"><span>E</span></div>
+            </foreignObject>
+            <!-- F: Power → Brain -->
+            <circle cx="450" cy="437" r="12" fill="#fff" stroke="#000" stroke-width="1.5"/>
+            <foreignObject x="438" y="425" width="24" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="svg-pin"><span>F</span></div>
+            </foreignObject>
+          </g>
+        </svg>
+
+        <div class="diagram__legend">
+          <div class="legend-item">
+            <span class="pin">A</span>
+            <h5>Eyes → Camera</h5>
+            <p>Mounted on top of the lens, USB-C to the Brain.</p>
+          </div>
+          <div class="legend-item">
+            <span class="pin">B</span>
+            <h5>Camera → Motors</h5>
+            <p>Cable from camera to the first lens motor.</p>
+          </div>
+          <div class="legend-item">
+            <span class="pin">C → D</span>
+            <h5>Brain → LCUBE</h5>
+            <p>Serial cable. Select the protocol in the Moon UI.</p>
+          </div>
+          <div class="legend-item">
+            <span class="pin">E</span>
+            <h5>Motors → LCUBE</h5>
+            <p>Motors are daisy-chained; a single line goes out to the LCUBE.</p>
+          </div>
+          <div class="legend-item">
+            <span class="pin">F</span>
+            <h5>Extra power</h5>
+            <p>Dedicated 12 V to the Brain — never shared.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETUP STEPS -->
+    <section class="band band--white" id="power">
+      <div class="eyebrow">04 → 08 · Setup Flow</div>
+      <h2 class="section-h">FIVE STEPS TO START.</h2>
+      <p class="lead">Run these steps in order on every new rig. Should take under ten minutes.</p>
+
+      <div class="steps">
+
+        <!-- STEP 1 -->
+        <div class="step">
+          <div class="step__num">01</div>
+          <div class="step__body">
+            <h3>Power the Brain — clean and stable</h3>
+            <p>The Brain needs <strong>12.5 V at 2 A minimum</strong>. Below that you'll see random connection drops or a "can't target" state that looks like a software bug — it isn't.</p>
+            <ul>
+              <li>Use a dedicated power line — don't daisy-chain off the camera D-tap. We recommend powering via Fischer 3-pin, with D-tap as a second option.</li>
+              <li>Boot the Brain <em>before</em> connecting the App, so the Wi-Fi channel scan can complete (~30 s).</li>
+            </ul>
+          </div>
+          <div class="screen">
+            <svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
+              <rect width="360" height="240" fill="#0E0E10"/>
+              <text x="20" y="32" font-family="Pragmatica Extended, sans-serif" font-weight="700" font-size="11" fill="#fff" letter-spacing="2">SYSTEM INFO</text>
+              <line x1="20" y1="44" x2="340" y2="44" stroke="#2a2a2e" stroke-width="1"/>
+              <text x="20" y="68" font-family="Inter, sans-serif" font-size="10" fill="#7a7a7e">INPUT VOLTAGE</text>
+              <text x="20" y="100" font-family="Pragmatica Extended, sans-serif" font-weight="700" font-size="36" fill="#fff">12.6<tspan font-size="16" fill="#7a7a7e"> V</tspan></text>
+              <rect x="20" y="116" width="320" height="6" rx="3" fill="#2a2a2e"/>
+              <rect x="20" y="116" width="240" height="6" rx="3" fill="#9CCB6B"/>
+              <text x="20" y="138" font-family="Inter, sans-serif" font-size="9" fill="#9CCB6B">▲ Stable · target 12.5 V</text>
+              <text x="200" y="68" font-family="Inter, sans-serif" font-size="10" fill="#7a7a7e">CURRENT DRAW</text>
+              <text x="200" y="100" font-family="Pragmatica Extended, sans-serif" font-weight="700" font-size="36" fill="#fff">2.3<tspan font-size="16" fill="#7a7a7e"> A</tspan></text>
+              <rect x="20" y="170" width="320" height="50" rx="6" fill="#1a1a1d"/>
+              <circle cx="40" cy="195" r="5" fill="#9CCB6B"/>
+              <text x="56" y="190" font-family="Inter, sans-serif" font-size="11" fill="#fff" font-weight="600">Brain READY</text>
+              <text x="56" y="206" font-family="Inter, sans-serif" font-size="9" fill="#7a7a7e">Eyes connected · glasses loaded</text>
+              <text x="320" y="200" text-anchor="end" font-family="Pragmatica Extended, sans-serif" font-weight="700" font-size="9" fill="#fff" letter-spacing="2">v3.4.2</text>
+            </svg>
+            <div class="screen__caption">
+              <span>System Info screen</span>
+              <span class="ruta">Settings → System Info</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2 WIFI -->
+        <div class="step" id="wifi">
+          <div class="step__num">02</div>
+          <div class="step__body">
+            <h3>Wi-Fi — let it pick the best channel</h3>
+            <p>The Moon hotspot offers <strong>2.4 GHz</strong> and <strong>5 GHz</strong>. On set, conflicts with Teradek and lighting are the norm, not the exception.</p>
+            <ul>
+              <li>Settings → Wi-Fi → enable <strong>Update to best channel</strong> (scans both bands at boot).</li>
+              <li>If lag shows up mid-take, fire a manual scan. Wait ~30 s. Pick the channel with the least <em>white</em> in the spectrum (white = average signal strength).</li>
+              <li>Moon does <strong>not</strong> channel-hop automatically. Hit <strong>Update Now</strong> if a nearby Teradek starts misbehaving.</li>
+              <li>Full connection loss → unplug and replug Brain power. Faster than any other fix.</li>
+            </ul>
+          </div>
+          <div class="screen">
+            <img src="../assets/moon-p03-1.png" alt="Moon Hotspot &amp; WiFi screen: Update to best channel, Behavior at Startup, recommended channels" />
+            <img src="../assets/moon-p03-2.png" alt="Wi-Fi spectrum scan interference graphs" />
+            <div class="screen__caption">
+              <span>Setup → Hotspot &amp; WiFi · spectrum scan</span>
+              <span class="ruta">Setup → Hotspot &amp; WiFi → View Spectrum Scans</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 CALIBRATION -->
+        <div class="step" id="calibration">
+          <div class="step__num">03</div>
+          <div class="step__body">
+            <h3>Focal-plane offset — the only critical calibration</h3>
+            <p>Measure from the Eyes sensor plane to the camera focal plane, in millimeters. Enter it under <strong>Settings → Eyes → Focal-plane offset</strong>.</p>
+            <ul>
+              <li>Use a negative value if the sensor sits <em>behind</em> the camera focal plane.</li>
+              <li>You can also switch between metric ↔ imperial here if the AC prefers feet/inches.</li>
+            </ul>
+          </div>
+          <div class="screen">
+            <img src="../assets/moon-p10-1.png" alt="Moon Eyes screen: Mount, Focal plane offset, Glasses file" />
+            <img src="../assets/moon-p10-2.png" alt="Glasses section with import from flash drive and IR projector option" />
+            <div class="screen__caption">
+              <span>Eyes screen — focal plane offset and glasses</span>
+              <span class="ruta">Setup → Eyes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4 PROTOCOL -->
+        <div class="step" id="protocol">
+          <div class="step__num">04</div>
+          <div class="step__body">
+            <h3>Select the LCS protocol</h3>
+            <p>Settings → <strong>Protocols</strong>. Choose the family that matches the handset on set:</p>
+            <ul>
+              <li><strong>Classic</strong> → Cinetape, ARRI, cMotion (the default after a factory reset).</li>
+              <li><strong>Preston</strong> → HU-3 / HU-4 with MDR-3 / MDR-4.</li>
+              <li>Wrong protocol = no distance shown on the handset. Data goes out, but the handset can't read it.</li>
+            </ul>
+          </div>
+          <div class="screen">
+            <img src="../assets/moon-p11-1.png" alt="Moon Connections screen: Lens control system with connector and protocol (Classic, Preston, Tilta, Teradek RT, Heden)" />
+            <div class="screen__caption">
+              <span>LCS protocol selection</span>
+              <span class="ruta">Setup → Connections → Protocol</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5 TILTA -->
+        <div class="step" id="tilta">
+          <div class="step__num">05</div>
+          <div class="step__body">
+            <h3>Tilta — manual lens mapping</h3>
+            <p>Tilta handsets can't store lens data, so the Moon has to hold the map. For every supported lens used with Tilta, create and save a custom map in the Moon UI.</p>
+            <ul>
+              <li>Name lenses descriptively: <em>"Vantage One T1 35mm"</em>, not <em>"kitty one"</em>.</li>
+              <li>When swapping lenses on a Tilta rig, the AC must re-select the correct map: <strong>Settings → Tilta → Lens file</strong>.</li>
+              <li>ARRI and Preston handsets store their own lens data — no mapping required.</li>
+            </ul>
+          </div>
+          <div class="screen">
+            <img src="../assets/moon-p12-1.png" alt="Moon Tilta screen: Motor version, Lens files, Create / Load / Delete lens map" />
+            <img src="../assets/moon-p13-1.png" alt="Loaded lens file detail with Reverse motor rotation and Sync close focus distance" />
+            <div class="screen__caption">
+              <span>Tilta — lens-map management</span>
+              <span class="ruta">On Set → Tilta → Lens files</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TRACKING MODES -->
+    <section class="band band--black" id="modes">
+      <div class="eyebrow">09 · Tracking Modes</div>
+      <h2 class="section-h">Pick the right mode<br/>or you'll lose the data.</h2>
+      <p class="lead">Four modes, each with a different power profile and data behavior.</p>
+
+      <figure style="margin: 0 0 32px; border: 1px solid rgba(255,255,255,0.08); background: #0E0E10;">
+        <img src="../assets/moon-p15-1.png" alt="Live Moon view in Point &amp; Person mode: two tracking boxes overlaid on the image showing distances 1.34 m (point) and 1.13 m (person), Tracking depth 25.0 / 0.350" style="width: 100%; display: block;" />
+        <figcaption style="padding: 12px 16px; font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 11px; color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.04); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;"><span>Point &amp; Person mode, live</span><span>Yellow box = Point · white box = Person</span></figcaption>
+      </figure>
+
+      <div class="grid-2" style="gap: 24px;">
+
+        <div class="mode-card">
+          <div class="mode-card__top">
+            <svg viewBox="0 0 320 180">
+              <rect width="320" height="180" fill="#000"/>
+              <rect x="80" y="40" width="80" height="100" rx="3" stroke="#fff" stroke-width="1" fill="none" stroke-dasharray="4 3"/>
+              <circle cx="120" cy="90" r="3" fill="#F2F1EC"/>
+              <circle cx="200" cy="120" r="3" fill="#F2F1EC" opacity="0.4"/>
+              <circle cx="240" cy="80" r="3" fill="#F2F1EC" opacity="0.4"/>
+            </svg>
+            <h4>Nearest Point</h4>
+          </div>
+          <div class="mode-card__body">
+            <p>Returns the distance to the nearest point inside a resizable frame. Looks for <em>objects</em>, not eyes — useful for product shots, gun barrels, props.</p>
+            <span class="tag">Low draw · no AI</span>
+          </div>
+        </div>
+
+        <div class="mode-card">
+          <div class="mode-card__top">
+            <svg viewBox="0 0 320 180">
+              <rect width="320" height="180" fill="#000"/>
+              <circle cx="120" cy="80" r="14" fill="none" stroke="#fff" stroke-width="1.5"/>
+              <circle cx="120" cy="80" r="3" fill="#F2F1EC"/>
+              <circle cx="200" cy="110" r="14" fill="none" stroke="#fff" stroke-width="1.5"/>
+              <circle cx="200" cy="110" r="3" fill="#F2F1EC"/>
+              <text x="14" y="170" fill="#fff" font-family="Inter" font-size="10">Eyes only</text>
+            </svg>
+            <h4>Person</h4>
+          </div>
+          <div class="mode-card__body">
+            <p>Detects <em>only</em> eyes and bodies. Efficient for actor work — but if the actor leaves the frame and only an inanimate object is left, tracking data drops.</p>
+            <span class="tag">High draw · AI</span>
+          </div>
+        </div>
+
+        <div class="mode-card">
+          <div class="mode-card__top">
+            <svg viewBox="0 0 320 180">
+              <rect width="320" height="180" fill="#000"/>
+              <rect x="40" y="30" width="240" height="120" rx="3" stroke="#fff" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+              <circle cx="120" cy="80" r="14" fill="none" stroke="#fff" stroke-width="1.5"/>
+              <circle cx="120" cy="80" r="3" fill="#F2F1EC"/>
+              <circle cx="220" cy="120" r="3" fill="#F2F1EC"/>
+            </svg>
+            <h4>Point &amp; Person <span class="reco-tag">RECOMMENDED</span></h4>
+          </div>
+          <div class="mode-card__body">
+            <p>The hybrid. Tracks people <em>and</em> falls back to the nearest point if the actor leaves the frame. Continuous data — the mode we deliver by default.</p>
+            <span class="tag tag--accent">LENSO Default</span>
+          </div>
+        </div>
+
+        <div class="mode-card">
+          <div class="mode-card__top">
+            <svg viewBox="0 0 320 180">
+              <rect width="320" height="180" fill="#000"/>
+              <line x1="160" y1="40" x2="160" y2="140" stroke="#fff" stroke-width="0.5" stroke-dasharray="2 4"/>
+              <line x1="60" y1="90" x2="260" y2="90" stroke="#fff" stroke-width="0.5" stroke-dasharray="2 4"/>
+              <circle cx="160" cy="90" r="6" fill="#F2F1EC"/>
+              <circle cx="160" cy="90" r="14" fill="none" stroke="#fff"/>
+            </svg>
+            <h4>Spot</h4>
+          </div>
+          <div class="mode-card__body">
+            <p>Tap any visible point — Moon returns and tracks the distance to that pixel. The fastest way to grab a mark during a take. No AI, very light on power.</p>
+            <span class="tag">Low draw · no AI</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="callout">
+        <div class="callout__icon">!</div>
+        <div class="callout__body">
+          <h5>Save battery between takes</h5>
+          <p>Tap the active mode button again to <strong>disable all processing</strong>. The Brain stays alive on the video feed only, in minimum draw — no need to power it down between setups.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERFACE -->
+    <section class="band band--cream" id="interface">
+      <div class="eyebrow">10 · Interface Settings</div>
+      <h2 class="section-h">TUNE FOR THE AC.</h2>
+      <p class="lead">Most ACs touch the same settings. Save them as a preset so the next job starts from the right baseline.</p>
+
+      <figure style="margin: 0 0 32px; border: 1px solid var(--color-lavender); background: #0E0E10;">
+        <img src="../assets/moon-p11-2.png" alt="Moon Interface screen: Units, Distance labels (position, size, decimals) and Distance readout" style="width: 100%; display: block;" />
+        <figcaption style="padding: 12px 16px; font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 11px; color: var(--color-espresso); background: var(--color-cream); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;"><span>Interface screen — Distance labels and readout</span><span>Setup → Interface</span></figcaption>
+      </figure>
+
+      <div class="grid-2">
+        <div>
+          <h3 style="font-size: 20px; letter-spacing: 0.02em; text-transform: uppercase; margin: 0 0 16px;">Distance readout</h3>
+          <dl style="margin: 0;">
+            <div class="kv"><dt>Label size</dt><dd>Settings → Interface → Label size</dd></div>
+            <div class="kv"><dt>Decimals</dt><dd>0, 1, or 2 — per AC preference</dd></div>
+            <div class="kv"><dt>Update speed</dt><dd>"Less noise" = steady reading, "More noise" = constant update</dd></div>
+            <div class="kv"><dt>Distance scale</dt><dd>Usually <code>OFF</code> for ARRI — the green mark already shows on the Hi-5 / WCU scale</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h3 style="font-size: 20px; letter-spacing: 0.02em; text-transform: uppercase; margin: 0 0 16px;">Sensor &amp; exposure</h3>
+          <dl style="margin: 0;">
+            <div class="kv"><dt>IR projector</dt><dd>Default <code>ON</code>. Effective up to 4 m. Disable if the red flash is visible to camera or actor.</dd></div>
+            <div class="kv"><dt>Exposure field</dt><dd>Yellow frame = active exposure region. To clear it: re-enable exposure → maximize → disable.</dd></div>
+            <div class="kv"><dt>Manual exposure</dt><dd>Tap <code>M</code> for manual control.</dd></div>
+            <div class="kv"><dt>Tracking depth</dt><dd>Min/max range filter. Accidentally on = no data. <strong>Always maximize before handover.</strong></dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout__icon">i</div>
+        <div class="callout__body">
+          <h5>The built-in help is your friend</h5>
+          <p>Every screen has a <code>?</code> icon. Tap it to open the contextual manual — works offline.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BITBOX / ETHERNET -->
+    <section class="band band--white" id="bitbox">
+      <div class="eyebrow">11 · BitBox &amp; Ethernet</div>
+      <h2 class="section-h">When it's wired.</h2>
+      <p class="lead">A BitBox avoids the Wi-Fi mess on high-stakes productions. The Moon has to act as a router on that subnet — not as a DHCP client.</p>
+
+      <figure style="margin: 0 0 32px; border: 1px solid var(--color-lavender); background: #0E0E10;">
+        <img src="../assets/moon-p06-1.png" alt="Moon Ethernet Configuration: Network Mode Router, IP Address 192.168.20.1, Subnet Mask 255.255.255.0" style="width: 100%; display: block;" />
+        <figcaption style="padding: 12px 16px; font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 11px; color: var(--color-espresso); background: var(--color-cream); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;"><span>Ethernet Configuration — Router mode</span><span>Setup → Hotspot &amp; WiFi → Ethernet</span></figcaption>
+      </figure>
+
+      <div class="grid-2">
+        <div class="spec-card">
+          <h4>BitBox connection</h4>
+          <div class="divider"></div>
+          <dl style="margin: 0;">
+            <div class="kv"><dt>Network mode</dt><dd>Change from <code>Automatic (DHCP)</code> → <code>Router</code></dd></div>
+            <div class="kv"><dt>IP Address</dt><dd><code>192.168.20.1</code> (or any unique value)</dd></div>
+            <div class="kv"><dt>Subnet mask</dt><dd><code>255.255.255.0</code> — enter manually</dd></div>
+          </dl>
+        </div>
+        <div class="spec-card">
+          <h4>Ethernet update mode</h4>
+          <div class="divider"></div>
+          <p>To <strong>update the Moon firmware over Ethernet</strong>, switch network mode back to <code>Automatic (DHCP)</code>. After the update, return to <code>Router</code> if BitBox is in use.</p>
+          <p style="margin-top:12px;">Static IP exists but is rarely needed — only certain DITs ask for it.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout__icon">i</div>
+        <div class="callout__body">
+          <h5>Alternative: external Wi-Fi</h5>
+          <p>Studios with solid infrastructure: turn off the Moon hotspot and join the studio network. The App device must be on the same network to discover the Brain.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TROUBLESHOOTING -->
+    <section class="band band--cream" id="troubleshoot">
+      <div class="eyebrow">12 · Troubleshooting</div>
+      <h2 class="section-h">First-line triage.</h2>
+      <p class="lead">The most common AC questions and the fastest fix for each. Power and Wi-Fi cover ~90% of the problems.</p>
+
+      <div class="tbl-wrap">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>Symptom</th>
+            <th>Likely cause</th>
+            <th>Fix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="symptom">App can't find the Brain</td>
+            <td class="cause">Wi-Fi hung, hotspot down.</td>
+            <td class="fix">Unplug and replug Brain power. Faster than any software fix.</td>
+          </tr>
+          <tr>
+            <td class="symptom">Connection drops during the take</td>
+            <td class="cause">Voltage below 12 V or current below 2 A.</td>
+            <td class="fix">Swap to a fresh battery or dedicated line. Confirm <code>12.5 V · 2 A</code>.</td>
+          </tr>
+          <tr>
+            <td class="symptom">Lag or stutters after boot</td>
+            <td class="cause">Wi-Fi channel saturated by Teradek / lighting.</td>
+            <td class="fix">Settings → Wi-Fi → <strong>Update Now</strong>. Wait 30 s for the scan.</td>
+          </tr>
+          <tr>
+            <td class="symptom">No distance on the handset</td>
+            <td class="cause">Wrong protocol.</td>
+            <td class="fix">Settings → Protocols → set to the handset family (Classic / Preston).</td>
+          </tr>
+          <tr>
+            <td class="symptom">ARRI: handset with no distance data even when everything is correct</td>
+            <td class="cause">Occasional glitch in Classic protocol negotiation or on the LBUS to the LCUBE.</td>
+            <td class="fix"><strong>1.</strong> Settings → Protocols → exit <code>Classic</code> and re-enter.<br/><strong>2.</strong> If it persists, unplug and replug the <strong>LBUS</strong> cable to the LCUBE.</td>
+          </tr>
+          <tr>
+            <td class="symptom">No distance data</td>
+            <td class="cause">Tracking depth filter active and tight.</td>
+            <td class="fix">Settings → Tracking depth → <strong>maximize the range</strong>.</td>
+          </tr>
+          <tr>
+            <td class="symptom">Permanent yellow frame</td>
+            <td class="cause">Exposure field still active.</td>
+            <td class="fix">Enable exposure → maximize frame → disable.</td>
+          </tr>
+          <tr>
+            <td class="symptom">Tracking loses the actor onto an object</td>
+            <td class="cause">Mode set to <em>Person</em>.</td>
+            <td class="fix">Switch to <strong>Point &amp; Person</strong> for continuous fallback.</td>
+          </tr>
+          <tr>
+            <td class="symptom">Locked out of Wi-Fi on return</td>
+            <td class="cause">Client changed the hotspot password and didn't share it.</td>
+            <td class="fix">Factory reset (System Info → Factory reset). Presets are preserved.</td>
+          </tr>
+          <tr>
+            <td class="symptom">Wrong DoF after a Tilta lens swap</td>
+            <td class="cause">Lens map wasn't re-selected.</td>
+            <td class="fix">Settings → Tilta → Lens file → pick the new map.</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <!-- RETURN CHECKLIST -->
+    <section class="band band--white" id="return">
+      <div class="eyebrow">13 · Return Checklist</div>
+      <h2 class="section-h">Before it goes back on the shelf.</h2>
+      <p class="lead">Run through every item. Tap each row to mark it done — stored in this browser. Stops the next AC from starting with another production's settings.</p>
+
+      <div class="checklist" id="checklist">
+        <!-- Items rendered by JS -->
+      </div>
+
+      <div class="callout callout--warn" style="margin-top: 32px;">
+        <div class="callout__icon">!</div>
+        <div class="callout__body">
+          <h5>Country of operation — legal note</h5>
+          <p>Some clients change the country (US, AU, JP) to bypass EU power limits. Operating that way in Spain is illegal. <strong>Always reset to country of origin on return</strong> — liability falls on LENSO.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLOPHON -->
+    <footer class="colophon">
+      <div>
+        <h6>Compiled by</h6>
+        <img src="../assets/lenso-logo.png" alt="LENSO" />
+        <p style="margin-top: 12px;">LENSO Film Services<br/>Madrid, Spain<br/>info@lenso-films.com</p>
+      </div>
+      <div>
+        <h6>System by</h6>
+        <img src="../assets/moon-logo.png" alt="MOON" />
+        <p style="margin-top: 12px;">Moonlighting Industries AB<br/>Stockholm · Örebro · Malmö<br/>moonsmartfocus.com</p>
+      </div>
+      <div>
+        <h6>
+</h6>
+        <p>
+</p>
+        <p style="margin-top: 12px; opacity: 0.5;">
+</p>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // --- Mobile sidebar toggle ---
+  const navToggle = document.getElementById('navToggle');
+  const sidebar = document.getElementById('sidebar');
+  navToggle && navToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('is-open');
+    navToggle.textContent = sidebar.classList.contains('is-open') ? 'Close' : 'Index';
+  });
+
+  // --- Sidebar active link tracking ---
+  const navLinks = document.querySelectorAll('#nav a');
+  const sections = [...document.querySelectorAll('section[id], footer[id]')];
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        navLinks.forEach((l) => {
+          l.classList.toggle('is-active', l.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+  sections.forEach((s) => observer.observe(s));
+
+  navLinks.forEach((l) => {
+    l.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = l.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (window.innerWidth <= 980) {
+          sidebar.classList.remove('is-open');
+          navToggle.textContent = 'Index';
+        }
+      }
+    });
+  });
+
+  // --- Checklist ---
+  const checklistData = [
+    { id: 'fr',   title: 'Factory reset performed',         desc: 'System Info → Factory reset. Returns protocol to Classic and clears stale customizations. Presets are preserved.', where: 'System Info' },
+    { id: 'pw',   title: 'Hotspot password recovered',      desc: 'If the AC changed the password, get it before return or you\'ll need a factory reset to recover the unit.', where: 'Wi-Fi → Hotspot' },
+    { id: 'co',   title: 'Country of operation reset',      desc: 'Reset to country of origin (Spain). Bypass is illegal under EU rules — liability falls on LENSO.', where: 'Wi-Fi → Region' },
+    { id: 'pr',   title: 'Protocol set to Classic',         desc: 'Factory reset handles it, but confirm before packing — wrong protocol = no readout for the next client.', where: 'Settings → Protocols' },
+    { id: 'td',   title: 'Tracking depth maximized',        desc: 'Most common "no data" cause. Range fully open before the case leaves the shop.', where: 'Settings → Tracking depth' },
+    { id: 'ex',   title: 'Exposure region cleared',         desc: 'Yellow frame off. Re-enable → maximize → disable if still visible.', where: 'Settings → Exposure' },
+    { id: 'gl',   title: 'Glasses files loaded',            desc: 'Both Eyes calibration files on both Brains for redundancy in multi-camera rigs.', where: 'Settings → Eyes' },
+    { id: 'fp',   title: 'Focal plane offset documented',   desc: 'Note the last value used so the next AC sees the rental default, not the previous shoot\'s.', where: 'Settings → Eyes → Offset' },
+    { id: 'fw',   title: 'Firmware up to date',             desc: 'Check release notes. If updating over Ethernet, switch network mode back to DHCP first.', where: 'System Info → Update' },
+    { id: 'pn',   title: 'Power tested under load',         desc: 'Confirm 12.5 V at 2 A under real load. Marginal sources cause most of the phantom issues.', where: 'On the bench' },
+    { id: 'cb',   title: 'Cables checked and coiled',       desc: 'Serial cable to LCU, USB to Eyes, dedicated 12 V tail. Replace anything worn.', where: 'Pelicase' },
+    { id: 'ip',   title: 'iPhone wiped and charged',        desc: 'Sign out of any client account. Charge to 100%. Reinstall the Moon App if a beta was used on the shoot.', where: 'iPhone 12 Mini' },
+  ];
+
+  const list = document.getElementById('checklist');
+  const STORAGE = 'lenso-moon-checklist-en';
+  const state = JSON.parse(localStorage.getItem(STORAGE) || '{}');
+
+  function render() {
+    list.innerHTML = checklistData.map((it) => `
+      <div class="checklist__row ${state[it.id] ? 'is-done' : ''}" data-id="${it.id}">
+        <div class="checklist__box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 7"/></svg>
+        </div>
+        <div class="checklist__txt">
+          <h5>${it.title}</h5>
+          <p>${it.desc}</p>
+        </div>
+        <div class="checklist__where">${it.where}</div>
+      </div>
+    `).join('');
+
+    list.querySelectorAll('.checklist__row').forEach((row) => {
+      row.addEventListener('click', () => {
+        const id = row.dataset.id;
+        state[id] = !state[id];
+        localStorage.setItem(STORAGE, JSON.stringify(state));
+        row.classList.toggle('is-done', !!state[id]);
+      });
+    });
+  }
+  render();
+
+  // --- Image lightbox ---
+  (function() {
+    const lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.setAttribute('aria-hidden', 'true');
+    lb.innerHTML = '<button class="lightbox__close" aria-label="Close">×</button><img class="lightbox__img" alt="" />';
+    document.body.appendChild(lb);
+    const lbImg = lb.querySelector('.lightbox__img');
+    const lbClose = lb.querySelector('.lightbox__close');
+
+    function open(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      lb.classList.add('is-open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lb.classList.remove('is-open');
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+
+    document.querySelectorAll('.screen img, figure img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
+        open(img.currentSrc || img.src, img.alt);
+      });
+    });
+
+    lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+    lbClose.addEventListener('click', close);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  })();
+</script>
+
+</body>
+</html>
