@@ -7,7 +7,7 @@
 @import url("./assets/lenso.css");
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; overflow-x: hidden; }
 body {
   background: var(--color-cream);
   color: var(--color-black);
@@ -359,7 +359,7 @@ section.band--black .eyebrow { color: rgba(255,255,255,0.6); }
   padding: 56px;
   position: relative;
 }
-.diagram svg { width: 100%; height: auto; display: block; }
+.diagram svg { width: 100% !important; height: auto !important; max-width: 100%; display: block; }
 
 /* Editable in-SVG labels (foreignObject) */
 .svg-label {
@@ -946,14 +946,17 @@ section.band--black .callout__body p { color: rgba(255,255,255,0.7); }
    ============================================================ */
 @media (max-width: 640px) {
   .hero { padding: 40px 20px 56px; }
+  .hero__title { font-size: clamp(36px, 11vw, 64px) !important; word-break: break-word; }
   section.band, .colophon { padding: 48px 20px; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .step {
-    grid-template-columns: 48px 1fr;
-    gap: 16px;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
     padding: 32px 0;
   }
-  .step__num { font-size: 44px; }
+  .step__num { font-size: 36px; }
+  .step__body h3 { font-size: clamp(16px, 4.5vw, 22px); word-break: break-word; }
+  .section-h { word-break: break-word; }
   .hero__top { flex-direction: column; align-items: flex-start; }
   .hero__meta { text-align: left; }
   .diagram { padding: 20px; }
