@@ -1223,8 +1223,41 @@ section.band--black .callout__body p { color: rgba(255,255,255,0.7); }
 
   .screen svg,
   .screen img { background: #0E0E10 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .mode-card__top { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #000 !important; color: #fff !important; }
-  .mode-card__top h4 { color: #fff !important; }
+  /* Mode cards: drop the absolute-positioned title overlay (Chrome print engine
+     mishandles position:absolute inside an aspect-ratio container) — stack title
+     below the SVG instead */
+  .mode-card__top {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background: #000 !important;
+    color: #fff !important;
+    aspect-ratio: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+  .mode-card__top svg {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16/9;
+    display: block !important;
+  }
+  .mode-card__top::after { display: none !important; }
+  .mode-card__top h4,
+  section.band--black .mode-card__top h4 {
+    position: static !important;
+    color: #fff !important;
+    margin: 0 !important;
+    padding: 4mm 5mm !important;
+    background: #000 !important;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    z-index: auto !important;
+  }
+  .mode-card__top h4 .reco-tag {
+    border-color: rgba(255,255,255,0.4) !important;
+    background: rgba(255,255,255,0.08) !important;
+    color: #fff !important;
+  }
 
   a { color: #000; }
 
