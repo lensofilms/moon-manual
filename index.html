@@ -747,13 +747,28 @@ REVISIÓN 1.0 · MAYO 2026
   const SIDEBAR_KEY = 'lenso-moon-sidebar-collapsed';
   const collapseBtn = document.getElementById('sidebarCollapse');
   const expandBtn = document.getElementById('sidebarExpand');
-  function setCollapsed(c) {
+  function setCollapsed(c, persist) {
     document.body.classList.toggle('sidebar-collapsed', c);
-    try { localStorage.setItem(SIDEBAR_KEY, c ? '1' : ''); } catch (_) {}
+    if (persist) {
+      try { localStorage.setItem(SIDEBAR_KEY, c ? '1' : ''); } catch (_) {}
+    }
   }
-  try { if (localStorage.getItem(SIDEBAR_KEY) === '1') setCollapsed(true); } catch (_) {}
-  collapseBtn && collapseBtn.addEventListener('click', () => setCollapsed(true));
-  expandBtn   && expandBtn.addEventListener('click',   () => setCollapsed(false));
+  try { if (localStorage.getItem(SIDEBAR_KEY) === '1') setCollapsed(true, false); } catch (_) {}
+  collapseBtn && collapseBtn.addEventListener('click', () => setCollapsed(true,  true));
+  expandBtn   && expandBtn.addEventListener('click',   () => setCollapsed(false, true));
+
+  // Auto-collapse on scroll-down (desktop only). Doesn't persist — leaves the
+  // user's last manual choice in storage intact.
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    const goingDown = y > lastScrollY;
+    lastScrollY = y;
+    if (window.innerWidth < 981) return;
+    if (goingDown && y > 80 && !document.body.classList.contains('sidebar-collapsed')) {
+      setCollapsed(true, false);
+    }
+  }, { passive: true });
 
   // --- Sidebar active link tracking ---
   const navLinks = document.querySelectorAll('#nav a');
