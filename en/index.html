@@ -114,9 +114,9 @@ REVISION 1.0 · MAY 2026
         </div>
         <div class="spec-card">
           <h4>Brain</h4>
-          <div class="key">12.5<small>v · 2A min</small></div>
+          <div class="key">12.5–24<small>v · ≥3A preferred</small></div>
           <div class="divider"></div>
-          <p>Anodized aluminum housing. Hosts the Wi-Fi hotspot, runs the tracking algorithms, and sends distance data to the LCS over a serial cable.</p>
+          <p>Anodized aluminum housing. Hosts the Wi-Fi hotspot, runs the tracking algorithms, and sends distance data to the LCS over a serial cable. Accepts 12.5 V or 24 V; <strong>3 A is the target</strong>. <strong>2 A is the absolute minimum</strong> and leaves little margin for drops.</p>
         </div>
         <div class="spec-card">
           <h4>App</h4>
@@ -316,34 +316,11 @@ REVISION 1.0 · MAY 2026
           <div class="step__num">01</div>
           <div class="step__body">
             <h3>Power the Brain — clean and stable</h3>
-            <p>The Brain needs <strong>12.5 V at 2 A minimum</strong>. Below that you'll see random connection drops or a "can't target" state that looks like a software bug — it isn't.</p>
+            <p>The Brain accepts <strong>12.5 V or 24 V</strong>. Aim for <strong>3 A</strong>; <strong>2 A is the absolute minimum</strong> and leaves little margin — below that you'll see random connection drops or a "can't target" state that looks like a software bug — it isn't.</p>
             <ul>
               <li>Use a dedicated power line — don't daisy-chain off the camera D-tap. We recommend powering via Fischer 3-pin, with D-tap as a second option.</li>
               <li>Boot the Brain <em>before</em> connecting the App, so the Wi-Fi channel scan can complete (~30 s).</li>
             </ul>
-          </div>
-          <div class="screen">
-            <svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
-              <rect width="360" height="240" fill="#0E0E10"/>
-              <text x="20" y="32" font-family="Pragmatica Extended, sans-serif" font-weight="700" font-size="11" fill="#fff" letter-spacing="2">SYSTEM INFO</text>
-              <line x1="20" y1="44" x2="340" y2="44" stroke="#2a2a2e" stroke-width="1"/>
-              <text x="20" y="68" font-family="Inter, sans-serif" font-size="10" fill="#7a7a7e">INPUT VOLTAGE</text>
-              <text x="20" y="100" font-family="Pragmatica Extended, sans-serif" font-weight="700" font-size="36" fill="#fff">12.6<tspan font-size="16" fill="#7a7a7e"> V</tspan></text>
-              <rect x="20" y="116" width="320" height="6" rx="3" fill="#2a2a2e"/>
-              <rect x="20" y="116" width="240" height="6" rx="3" fill="#9CCB6B"/>
-              <text x="20" y="138" font-family="Inter, sans-serif" font-size="9" fill="#9CCB6B">▲ Stable · target 12.5 V</text>
-              <text x="200" y="68" font-family="Inter, sans-serif" font-size="10" fill="#7a7a7e">CURRENT DRAW</text>
-              <text x="200" y="100" font-family="Pragmatica Extended, sans-serif" font-weight="700" font-size="36" fill="#fff">2.3<tspan font-size="16" fill="#7a7a7e"> A</tspan></text>
-              <rect x="20" y="170" width="320" height="50" rx="6" fill="#1a1a1d"/>
-              <circle cx="40" cy="195" r="5" fill="#9CCB6B"/>
-              <text x="56" y="190" font-family="Inter, sans-serif" font-size="11" fill="#fff" font-weight="600">Brain READY</text>
-              <text x="56" y="206" font-family="Inter, sans-serif" font-size="9" fill="#7a7a7e">Eyes connected · glasses loaded</text>
-              <text x="320" y="200" text-anchor="end" font-family="Pragmatica Extended, sans-serif" font-weight="700" font-size="9" fill="#fff" letter-spacing="2">v3.4.2</text>
-            </svg>
-            <div class="screen__caption">
-              <span>System Info screen</span>
-              <span class="ruta">Settings → System Info</span>
-            </div>
           </div>
         </div>
 
@@ -419,7 +396,7 @@ REVISION 1.0 · MAY 2026
             <h3>Tilta — manual lens mapping</h3>
             <p>Tilta handsets can't store lens data, so the Moon has to hold the map. For every supported lens used with Tilta, create and save a custom map in the Moon UI.</p>
             <ul>
-              <li>Name lenses descriptively: <em>"Vantage One T1 35mm"</em>, not <em>"kitty one"</em>.</li>
+              <li>Name lenses descriptively and <strong>without spaces</strong> (the Moon UI rejects them): <em>"Vantage_One_T1_35mm"</em>, not <em>"kitty one"</em>.</li>
               <li>When swapping lenses on a Tilta rig, the AC must re-select the correct map: <strong>Settings → Tilta → Lens file</strong>.</li>
               <li>ARRI and Preston handsets store their own lens data — no mapping required.</li>
             </ul>
@@ -445,7 +422,7 @@ REVISION 1.0 · MAY 2026
 
       <figure style="margin: 0 0 32px; border: 1px solid rgba(255,255,255,0.08); background: #0E0E10;">
         <img src="../assets/moon-p15-1.png" alt="Live Moon view in Point &amp; Person mode: two tracking boxes overlaid on the image showing distances 1.34 m (point) and 1.13 m (person), Tracking depth 25.0 / 0.350" style="width: 100%; display: block;" />
-        <figcaption style="padding: 12px 16px; font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 11px; color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.04); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;"><span>Point &amp; Person mode, live</span><span>Yellow box = Point · white box = Person</span></figcaption>
+        <figcaption style="padding: 12px 16px; font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 11px; color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.04); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;"><span>Point &amp; Person mode, live</span><span>Two distances at once — Point + Person</span></figcaption>
       </figure>
 
       <div class="grid-2" style="gap: 24px;">
@@ -561,13 +538,6 @@ REVISION 1.0 · MAY 2026
         </div>
       </div>
 
-      <div class="callout">
-        <div class="callout__icon">i</div>
-        <div class="callout__body">
-          <h5>The built-in help is your friend</h5>
-          <p>Every screen has a <code>?</code> icon. Tap it to open the contextual manual — works offline.</p>
-        </div>
-      </div>
     </section>
 
     <!-- BITBOX / ETHERNET -->
@@ -631,8 +601,8 @@ REVISION 1.0 · MAY 2026
           </tr>
           <tr>
             <td class="symptom">Connection drops during the take</td>
-            <td class="cause">Voltage below 12 V or current below 2 A.</td>
-            <td class="fix">Swap to a fresh battery or dedicated line. Confirm <code>12.5 V · 2 A</code>.</td>
+            <td class="cause">Voltage below 12 V or current below 2 A — source on the edge.</td>
+            <td class="fix">Swap to a fresh battery or dedicated line. Confirm <code>12.5 V · ≥3 A</code> (target); <code>2 A</code> is the absolute minimum.</td>
           </tr>
           <tr>
             <td class="symptom">Lag or stutters after boot</td>
@@ -807,7 +777,7 @@ REVISION 1.0 · MAY 2026
     { id: 'gl',   title: 'Glasses files loaded',            desc: 'Both Eyes calibration files on both Brains for redundancy in multi-camera rigs.', where: 'Settings → Eyes' },
     { id: 'fp',   title: 'Focal plane offset documented',   desc: 'Note the last value used so the next AC sees the rental default, not the previous shoot\'s.', where: 'Settings → Eyes → Offset' },
     { id: 'fw',   title: 'Firmware up to date',             desc: 'Check release notes. If updating over Ethernet, switch network mode back to DHCP first.', where: 'System Info → Update' },
-    { id: 'pn',   title: 'Power tested under load',         desc: 'Confirm 12.5 V at 2 A under real load. Marginal sources cause most of the phantom issues.', where: 'On the bench' },
+    { id: 'pn',   title: 'Power tested under load',         desc: 'Confirm 12.5 V or 24 V at 3 A under real load (2 A is the absolute minimum). Marginal sources cause most of the phantom issues.', where: 'On the bench' },
     { id: 'cb',   title: 'Cables checked and coiled',       desc: 'Serial cable to LCU, USB to Eyes, dedicated 12 V tail. Replace anything worn.', where: 'Pelicase' },
     { id: 'sn',   title: 'Sony PDT-FP1 wiped and charged',  desc: 'Sign out of any client account. Charge to 100%. Reinstall the Moon App if a beta was used on the shoot.', where: 'Sony PDT-FP1' },
   ];

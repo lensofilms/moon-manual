@@ -114,9 +114,9 @@ REVISIÓN 1.0 · MAYO 2026
         </div>
         <div class="spec-card">
           <h4>Brain</h4>
-          <div class="key">12,5<small>v · 2A mín.</small></div>
+          <div class="key">12,5–24<small>v · ≥3A preferido</small></div>
           <div class="divider"></div>
-          <p>Carcasa de aluminio anodizado. Hospeda el hotspot Wi-Fi, ejecuta los algoritmos de tracking y envía los datos de distancia al LCS por cable serial.</p>
+          <p>Carcasa de aluminio anodizado. Hospeda el hotspot Wi-Fi, ejecuta los algoritmos de tracking y envía los datos de distancia al LCS por cable serial. Acepta 12,5V o 24V; lo ideal es <strong>3A</strong>. <strong>2A es el mínimo absoluto</strong> y deja poco margen para caídas.</p>
         </div>
         <div class="spec-card">
           <h4>App</h4>
@@ -316,38 +316,11 @@ REVISIÓN 1.0 · MAYO 2026
           <div class="step__num">01</div>
           <div class="step__body">
             <h3>Alimenta el Brain — limpio y estable</h3>
-            <p>El Brain necesita <strong>12,5 V a 2 A mínimo</strong>. Por debajo de eso verás caídas de conexión aleatorias o un estado "no se puede target" que parece un bug del software, pero no lo es.</p>
+            <p>El Brain acepta <strong>12,5 V o 24 V</strong>. Lo ideal es <strong>3 A</strong>; <strong>2 A es el mínimo absoluto</strong> y deja poco margen — por debajo verás caídas de conexión aleatorias o un estado "no se puede target" que parece un bug del software, pero no lo es.</p>
             <ul>
               <li>Usa una línea de alimentación dedicada — no encadenes desde el D-tap de la cámara. Recomendamos alimentar por Fischer 3 pin y como segunda opción, Dtap.</li>
               <li>Arranca el Brain <em>antes</em> de conectar la App, para que el escaneo de canal Wi-Fi pueda completarse (~30 s).</li>
             </ul>
-          </div>
-          <div class="screen">
-            <svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
-              <rect width="360" height="240" fill="#0E0E10"/>
-              <!-- header -->
-              <text x="20" y="32" font-family="Pragmatica Extended, sans-serif" font-weight="700" font-size="11" fill="#fff" letter-spacing="2">SYSTEM INFO</text>
-              <line x1="20" y1="44" x2="340" y2="44" stroke="#2a2a2e" stroke-width="1"/>
-              <!-- voltage bar -->
-              <text x="20" y="68" font-family="Inter, sans-serif" font-size="10" fill="#7a7a7e">INPUT VOLTAGE</text>
-              <text x="20" y="100" font-family="Pragmatica Extended, sans-serif" font-weight="700" font-size="36" fill="#fff">12.6<tspan font-size="16" fill="#7a7a7e"> V</tspan></text>
-              <rect x="20" y="116" width="320" height="6" rx="3" fill="#2a2a2e"/>
-              <rect x="20" y="116" width="240" height="6" rx="3" fill="#9CCB6B"/>
-              <text x="20" y="138" font-family="Inter, sans-serif" font-size="9" fill="#9CCB6B">▲ Stable · target 12.5 V</text>
-              <!-- amperage -->
-              <text x="200" y="68" font-family="Inter, sans-serif" font-size="10" fill="#7a7a7e">CURRENT DRAW</text>
-              <text x="200" y="100" font-family="Pragmatica Extended, sans-serif" font-weight="700" font-size="36" fill="#fff">2.3<tspan font-size="16" fill="#7a7a7e"> A</tspan></text>
-              <!-- status row -->
-              <rect x="20" y="170" width="320" height="50" rx="6" fill="#1a1a1d"/>
-              <circle cx="40" cy="195" r="5" fill="#9CCB6B"/>
-              <text x="56" y="190" font-family="Inter, sans-serif" font-size="11" fill="#fff" font-weight="600">Brain READY</text>
-              <text x="56" y="206" font-family="Inter, sans-serif" font-size="9" fill="#7a7a7e">Eyes connected · glasses loaded</text>
-              <text x="320" y="200" text-anchor="end" font-family="Pragmatica Extended, sans-serif" font-weight="700" font-size="9" fill="#fff" letter-spacing="2">v3.4.2</text>
-            </svg>
-            <div class="screen__caption">
-              <span>Pantalla System Info</span>
-              <span class="ruta">Settings → System Info</span>
-            </div>
           </div>
         </div>
 
@@ -423,7 +396,7 @@ REVISIÓN 1.0 · MAYO 2026
             <h3>Tilta — mapeo manual de objetivos</h3>
             <p>Los handsets Tilta no pueden almacenar datos de objetivos, así que el Moon debe guardar el mapa. Para cada objetivo compatible que se use con Tilta, crea y guarda un mapa personalizado en la UI Moon.</p>
             <ul>
-              <li>Nombra los objetivos de forma descriptiva: <em>"Vantage One T1 35mm"</em>, no <em>"kitty one"</em>.</li>
+              <li>Nombra los objetivos de forma descriptiva y <strong>sin espacios</strong> (la UI Moon no los acepta): <em>"Vantage_One_T1_35mm"</em>, no <em>"kitty one"</em>.</li>
               <li>Al cambiar de objetivo en un montaje Tilta, el AC debe reseleccionar el mapa correcto: <strong>Settings → Tilta → Lens file</strong>.</li>
               <li>Los handsets ARRI y Preston guardan los datos de objetivo por su cuenta — no requiere mapeo.</li>
             </ul>
@@ -449,7 +422,7 @@ REVISIÓN 1.0 · MAYO 2026
 
       <figure style="margin: 0 0 32px; border: 1px solid rgba(255,255,255,0.08); background: #0E0E10;">
         <img src="assets/moon-p15-1.png" alt="Vista en directo de Moon en modo Point &amp; Person: dos boxes de tracking superpuestos a la imagen mostrando distancias 1.34 m (point) y 1.13 m (person), Tracking depth 25.0 / 0.350" style="width: 100%; display: block;" />
-        <figcaption style="padding: 12px 16px; font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 11px; color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.04); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;"><span>Modo Point &amp; Person en directo</span><span>Box amarillo = Point · box blanco = Person</span></figcaption>
+        <figcaption style="padding: 12px 16px; font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 11px; color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.04); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;"><span>Modo Point &amp; Person en directo</span><span>Dos distancias a la vez — Point + Person</span></figcaption>
       </figure>
 
       <div class="grid-2" style="gap: 24px;">
@@ -565,13 +538,6 @@ REVISIÓN 1.0 · MAYO 2026
         </div>
       </div>
 
-      <div class="callout">
-        <div class="callout__icon">i</div>
-        <div class="callout__body">
-          <h5>La ayuda integrada es tu amiga</h5>
-          <p>Cada pantalla tiene un icono <code>?</code>. Tócalo para abrir el manual contextual — funciona offline.</p>
-        </div>
-      </div>
     </section>
 
     <!-- BITBOX / ETHERNET -->
@@ -635,8 +601,8 @@ REVISIÓN 1.0 · MAYO 2026
           </tr>
           <tr>
             <td class="symptom">Caídas de conexión durante la toma</td>
-            <td class="cause">Voltaje por debajo de 12 V o amperaje por debajo de 2 A.</td>
-            <td class="fix">Cambia a una batería nueva o línea dedicada. Confirma <code>12,5 V · 2 A</code>.</td>
+            <td class="cause">Voltaje por debajo de 12 V o amperaje por debajo de 2 A — fuente al límite.</td>
+            <td class="fix">Cambia a una batería nueva o línea dedicada. Confirma <code>12,5 V · ≥3 A</code> (lo ideal); <code>2 A</code> es el mínimo absoluto.</td>
           </tr>
           <tr>
             <td class="symptom">Lag o cortes tras el arranque</td>
@@ -811,7 +777,7 @@ REVISIÓN 1.0 · MAYO 2026
     { id: 'gl',   title: 'Ficheros glasses cargados',       desc: 'Ambos ficheros de calibración Eyes en ambos Brains para redundancia en montajes multicámara.', where: 'Settings → Eyes' },
     { id: 'fp',   title: 'Offset de plano focal documentado', desc: 'Anota el último valor usado para que el siguiente AC vea el default del alquiler, no el del rodaje anterior.', where: 'Settings → Eyes → Offset' },
     { id: 'fw',   title: 'Firmware actualizado',            desc: 'Comprueba release notes. Si actualizas por Ethernet, vuelve antes el modo de red a DHCP.', where: 'System Info → Update' },
-    { id: 'pn',   title: 'Alimentación testada bajo carga', desc: 'Confirma 12,5 V a 2 A bajo carga real. Las fuentes marginales son la causa de la mayoría de problemas fantasma.', where: 'En el banco' },
+    { id: 'pn',   title: 'Alimentación testada bajo carga', desc: 'Confirma 12,5 V o 24 V a 3 A bajo carga real (2 A es el mínimo absoluto). Las fuentes marginales son la causa de la mayoría de problemas fantasma.', where: 'En el banco' },
     { id: 'cb',   title: 'Cables revisados y enrollados',   desc: 'Cable serial al LCU, USB a Eyes, cola dedicada de 12 V. Sustituye lo que esté gastado.', where: 'Pelicase' },
     { id: 'sn',   title: 'Sony PDT-FP1 borrado y cargado',  desc: 'Cierra cualquier sesión del cliente. Carga al 100%. Reinstala la Moon App si se usó una versión beta en rodaje.', where: 'Sony PDT-FP1' },
   ];
