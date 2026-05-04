@@ -777,16 +777,6 @@ section.band--black .spec-card .divider { background: rgba(255,255,255,0.14); }
   opacity: 1;
   white-space: nowrap;
 }
-.mode-card__top h4 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin: 0;
-  position: relative;
-  z-index: 1;
-}
 .mode-card__body { padding: 22px 24px 26px; }
 .mode-card__body p {
   font-size: 14px;
