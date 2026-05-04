@@ -162,6 +162,58 @@ img { max-width: 100%; display: block; }
   line-height: 1.5;
 }
 
+/* ---------- SIDEBAR COLLAPSE (desktop only) ---------- */
+.sidebar__collapse {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border-radius: 4px;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: background 140ms, color 140ms;
+}
+.sidebar__collapse:hover { background: rgba(255,255,255,0.08); color: white; }
+
+.sidebar__expand {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 60;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: var(--color-black);
+  color: white;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  transition: transform 140ms;
+}
+.sidebar__expand:hover { transform: scale(1.05); }
+
+@media (min-width: 981px) {
+  .sidebar__collapse { display: flex; }
+  body.sidebar-collapsed .shell { grid-template-columns: 1fr; }
+  body.sidebar-collapsed .sidebar { display: none; }
+  body.sidebar-collapsed .sidebar__expand { display: flex; }
+}
+
 /* ---------- WAREHOUSE-ONLY (section 13) ---------- */
 .is-warehouse { display: none !important; }
 body.warehouse-mode section.is-warehouse { display: block !important; }
@@ -1025,6 +1077,37 @@ section.band--black .callout__body p { color: rgba(255,255,255,0.7); }
   font-family: var(--font-heading);
 }
 .lightbox__close:hover { background: rgba(255,255,255,0.15); }
+.lightbox__prev,
+.lightbox__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  z-index: 1;
+}
+.lightbox__prev { left: 24px; }
+.lightbox__next { right: 24px; }
+.lightbox__prev:hover,
+.lightbox__next:hover { background: rgba(255,255,255,0.15); }
+.lightbox__prev:disabled,
+.lightbox__next:disabled { opacity: 0; pointer-events: none; }
+@media (max-width: 640px) {
+  .lightbox__prev, .lightbox__next { width: 44px; height: 44px; font-size: 22px; }
+  .lightbox__prev { left: 8px; }
+  .lightbox__next { right: 8px; }
+}
 
 /* ============================================================
    PRINT — exportable PDF manual
@@ -1041,7 +1124,7 @@ section.band--black .callout__body p { color: rgba(255,255,255,0.7); }
     font-size: 10.5pt;
   }
 
-  .mobile-bar, .sidebar, .sidebar__actions, .lang-toggle, .lightbox, #tweaks-root { display: none !important; }
+  .mobile-bar, .sidebar, .sidebar__actions, .lang-toggle, .sidebar__expand, .sidebar__collapse, .lightbox, #tweaks-root { display: none !important; }
   .shell { display: block; }
   .main { padding: 0; }
 

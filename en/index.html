@@ -23,6 +23,7 @@
 
   <!-- ============== SIDEBAR ============== -->
   <aside class="sidebar" id="sidebar">
+    <button class="sidebar__collapse" id="sidebarCollapse" aria-label="Hide menu" title="Hide menu">‹</button>
     <div class="sidebar__brandlock">
       <div class="brand-row">
         <img src="../assets/lenso-logo.png" alt="LENSO" />
@@ -130,7 +131,7 @@ REVISION 1.0 · MAY 2026
     <section class="band band--cream" id="wiring">
       <div class="eyebrow">03 · Wiring Diagram</div>
       <h2 class="section-h">RIG</h2>
-      <p class="lead">A standard ARRI rig. The Brain feeds data to the LCUBE, which drives the lens motors, while a clean 12 V line keeps the Brain stable. Always power the Brain on its own — sharing the camera D-tap is the fastest way to trigger the voltage drops described in §04.</p>
+      <p class="lead">A standard ARRI rig. The Brain feeds data to the LCUBE, which drives the lens motors, while a clean 12 V line keeps the Brain stable. Always power the Brain on its own — sharing the camera D-tap is the fastest way to trigger the voltage drops described in section 04.</p>
 
       <div class="diagram">
         <svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000" stroke-width="1.5" class="wiring-svg" style="width: 697px">
@@ -727,6 +728,8 @@ SERIAL IN · MOTOR OUT</span></div>
   </main>
 </div>
 
+<button class="sidebar__expand" id="sidebarExpand" aria-label="Show menu" title="Show menu">☰</button>
+
 <script>
   // --- Warehouse mode (reveals section 13 when URL has ?warehouse=1) ---
   if (new URLSearchParams(location.search).get('warehouse') === '1') {
@@ -740,6 +743,18 @@ SERIAL IN · MOTOR OUT</span></div>
     sidebar.classList.toggle('is-open');
     navToggle.textContent = sidebar.classList.contains('is-open') ? 'Close' : 'Index';
   });
+
+  // --- Desktop sidebar collapse ---
+  const SIDEBAR_KEY = 'lenso-moon-sidebar-collapsed';
+  const collapseBtn = document.getElementById('sidebarCollapse');
+  const expandBtn = document.getElementById('sidebarExpand');
+  function setCollapsed(c) {
+    document.body.classList.toggle('sidebar-collapsed', c);
+    try { localStorage.setItem(SIDEBAR_KEY, c ? '1' : ''); } catch (_) {}
+  }
+  try { if (localStorage.getItem(SIDEBAR_KEY) === '1') setCollapsed(true); } catch (_) {}
+  collapseBtn && collapseBtn.addEventListener('click', () => setCollapsed(true));
+  expandBtn   && expandBtn.addEventListener('click',   () => setCollapsed(false));
 
   // --- Sidebar active link tracking ---
   const navLinks = document.querySelectorAll('#nav a');
@@ -816,19 +831,38 @@ SERIAL IN · MOTOR OUT</span></div>
   }
   render();
 
-  // --- Image lightbox ---
+  // --- Image lightbox with prev/next ---
   (function() {
+    const allImages = [...document.querySelectorAll('.screen img, figure img')];
+    if (!allImages.length) return;
+
     const lb = document.createElement('div');
     lb.className = 'lightbox';
     lb.setAttribute('aria-hidden', 'true');
-    lb.innerHTML = '<button class="lightbox__close" aria-label="Close">×</button><img class="lightbox__img" alt="" />';
+    lb.innerHTML =
+      '<button class="lightbox__close" aria-label="Close">×</button>' +
+      '<button class="lightbox__prev"  aria-label="Previous">‹</button>' +
+      '<button class="lightbox__next"  aria-label="Next">›</button>' +
+      '<img class="lightbox__img" alt="" />';
     document.body.appendChild(lb);
-    const lbImg = lb.querySelector('.lightbox__img');
+    const lbImg   = lb.querySelector('.lightbox__img');
     const lbClose = lb.querySelector('.lightbox__close');
+    const lbPrev  = lb.querySelector('.lightbox__prev');
+    const lbNext  = lb.querySelector('.lightbox__next');
 
-    function open(src, alt) {
-      lbImg.src = src;
-      lbImg.alt = alt || '';
+    let currentIdx = -1;
+
+    function showAt(idx) {
+      currentIdx = (idx + allImages.length) % allImages.length;
+      const img = allImages[currentIdx];
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || '';
+      const single = allImages.length < 2;
+      lbPrev.disabled = single;
+      lbNext.disabled = single;
+    }
+    function open(idx) {
+      showAt(idx);
       lb.classList.add('is-open');
       lb.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -838,19 +872,27 @@ SERIAL IN · MOTOR OUT</span></div>
       lb.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
       lbImg.src = '';
+      currentIdx = -1;
     }
 
-    document.querySelectorAll('.screen img, figure img').forEach(img => {
+    allImages.forEach((img, i) => {
       img.style.cursor = 'zoom-in';
       img.addEventListener('click', (e) => {
         e.stopPropagation();
-        open(img.currentSrc || img.src, img.alt);
+        open(i);
       });
     });
 
     lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
-    lbClose.addEventListener('click', close);
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    lbClose.addEventListener('click', (e) => { e.stopPropagation(); close(); });
+    lbPrev .addEventListener('click', (e) => { e.stopPropagation(); showAt(currentIdx - 1); });
+    lbNext .addEventListener('click', (e) => { e.stopPropagation(); showAt(currentIdx + 1); });
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('is-open')) return;
+      if (e.key === 'Escape')     close();
+      if (e.key === 'ArrowLeft')  showAt(currentIdx - 1);
+      if (e.key === 'ArrowRight') showAt(currentIdx + 1);
+    });
   })();
 </script>
 
