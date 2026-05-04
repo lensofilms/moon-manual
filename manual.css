@@ -162,6 +162,11 @@ img { max-width: 100%; display: block; }
   line-height: 1.5;
 }
 
+/* ---------- WAREHOUSE-ONLY (section 13) ---------- */
+.is-warehouse { display: none !important; }
+body.warehouse-mode section.is-warehouse { display: block !important; }
+body.warehouse-mode a.is-warehouse { display: flex !important; }
+
 /* ---------- LANG TOGGLE ---------- */
 .lang-toggle {
   display: flex;
@@ -321,12 +326,14 @@ section.band--black .eyebrow { color: rgba(255,255,255,0.6); }
 .hero__title {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: clamp(48px, 8vw, 128px);
+  font-size: clamp(40px, 6.2vw, 96px);
   line-height: 0.92;
   letter-spacing: 0.005em;
   text-transform: uppercase;
   margin: 0;
   text-wrap: balance;
+  word-break: break-word;
+  hyphens: auto;
 }
 .hero__title .accent { color: var(--color-espresso); }
 

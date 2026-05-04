@@ -60,7 +60,7 @@
 
       <div class="nav__group">Service</div>
       <a href="#troubleshoot"><span class="num">12</span>Troubleshooting</a>
-      <a href="#return"><span class="num">13</span>Return checklist</a>
+      <a href="#return" class="is-warehouse"><span class="num">13</span>Return checklist</a>
     </nav>
 
     <div class="sidebar__actions">
@@ -683,8 +683,8 @@ SERIAL IN · MOTOR OUT</span></div>
       </div>
     </section>
 
-    <!-- RETURN CHECKLIST -->
-    <section class="band band--white" id="return">
+    <!-- RETURN CHECKLIST · warehouse-only -->
+    <section class="band band--white is-warehouse" id="return">
       <div class="eyebrow">13 · Return Checklist</div>
       <h2 class="section-h">Before it goes back on the shelf.</h2>
       <p class="lead">Run through every item. Tap each row to mark it done — stored in this browser. Stops the next AC from starting with another production's settings.</p>
@@ -728,6 +728,11 @@ SERIAL IN · MOTOR OUT</span></div>
 </div>
 
 <script>
+  // --- Warehouse mode (reveals section 13 when URL has ?warehouse=1) ---
+  if (new URLSearchParams(location.search).get('warehouse') === '1') {
+    document.body.classList.add('warehouse-mode');
+  }
+
   // --- Mobile sidebar toggle ---
   const navToggle = document.getElementById('navToggle');
   const sidebar = document.getElementById('sidebar');
@@ -779,7 +784,7 @@ SERIAL IN · MOTOR OUT</span></div>
     { id: 'fw',   title: 'Firmware up to date',             desc: 'Check release notes. If updating over Ethernet, switch network mode back to DHCP first.', where: 'System Info → Update' },
     { id: 'pn',   title: 'Power tested under load',         desc: 'Confirm 12.5 V at 2 A under real load. Marginal sources cause most of the phantom issues.', where: 'On the bench' },
     { id: 'cb',   title: 'Cables checked and coiled',       desc: 'Serial cable to LCU, USB to Eyes, dedicated 12 V tail. Replace anything worn.', where: 'Pelicase' },
-    { id: 'ip',   title: 'iPhone wiped and charged',        desc: 'Sign out of any client account. Charge to 100%. Reinstall the Moon App if a beta was used on the shoot.', where: 'iPhone 12 Mini' },
+    { id: 'sn',   title: 'Sony PDT-FP1 wiped and charged',  desc: 'Sign out of any client account. Charge to 100%. Reinstall the Moon App if a beta was used on the shoot.', where: 'Sony PDT-FP1' },
   ];
 
   const list = document.getElementById('checklist');
